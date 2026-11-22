@@ -25,9 +25,15 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <div class="language-controls">
+          <button id="rtlToggleBtn" class="language-toggle" type="button" aria-pressed="false">
+            العربية / RTL
+          </button>
+        </div>
         <img
           class="hero-image"
           src="img/gettyimages_loreal1.jpg"
@@ -42,38 +48,149 @@
       </header>
 
       <!------- Chat Area ------->
-      <main>
-        <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
-            <!-- messages will be appended here via JS -->
+      <main id="mainContent">
+        <div class="routine-builder-layout">
+        <!-- phase one -->
+        <section class="product-section" aria-labelledby="productHeading">
+          <div class="section-heading">
+            <p class="section-eyebrow">L'Oréal Paris</p>
+            <h2 id="productHeading">Explore Products</h2>
+            <p>Browse beauty essentials and open a product to read its description.</p>
+          </div>
+          <!-- phase three -->
+
+          <!-- Product search and category controls -->
+          <div class="product-controls">
+            <div class="product-search-control">
+              <label for="productSearch">Search products</label>
+              <div class="search-input-row">
+                <input
+                  id="productSearch"
+                  type="search"
+                  placeholder="Search by name or keyword..."
+                  autocomplete="off"
+                />
+                <button id="clearSearchBtn" class="clear-search" type="button" disabled>
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <div class="product-category-control">
+              <label for="categoryFilter">Category</label>
+              <select id="categoryFilter">
+                <option value="All">All categories</option>
+                <option value="Skincare">Skincare</option>
+                <option value="Haircare">Haircare</option>
+                <option value="Makeup">Makeup</option>
+              </select>
+            </div>
+
+            <button id="clearFiltersBtn" class="clear-filters" type="button">
+              Clear Filters
+            </button>
           </div>
 
-          <form id="chatForm" class="chat-form">
-            <label for="userInput" class="visually-hidden">Message</label>
-            <input
-              id="userInput"
-              name="userInput"
-              type="text"
-              placeholder="Ask me about products or routines…"
-              autocomplete="off"
-              required
-            />
-            <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
-              <span class="visually-hidden">Send</span>
+          <p id="productResultsCount" class="product-results-count" aria-live="polite"></p>
+          <!-- phase three end -->
+          <div id="productGrid" class="product-grid">
+            <!-- Product cards will be added here by script.js -->
+          </div>
+        </section>
+
+        <!-- phase one end -->
+        <!-- phase two -->
+        <!-- Phase 2: Selected products -->
+        <section class="selected-products" aria-labelledby="selectedProductsHeading">
+          <div class="selected-products-header">
+            <div>
+              <p class="section-eyebrow">Your Beauty Edit</p>
+              <h2 id="selectedProductsHeading">Selected Products</h2>
+            </div>
+            <button id="clearSelectionsBtn" class="clear-selections" type="button">
+              Clear All
             </button>
-          </form>
+          </div>
+
+          <p id="selectedCount" class="selected-count">0 products selected</p>
+          <div id="selectedProductsList" class="selected-products-list">
+            <!-- Selected products will be added here by script.js -->
+          </div>
+          <button id="generateRoutineBtn" class="generate-routine" type="button" disabled>
+            Generate Routine
+          </button>
+          <p id="routineStatus" class="routine-status" aria-live="polite"></p>
+          <p id="selectionAnnouncement" class="visually-hidden" aria-live="polite"></p>
+        </section>
+
+        <!-- phase two end -->
+        </div>
+        <section class="chatbox">
+          <div class="chat-layout">
+            <aside class="chat-portrait" aria-label="L'Oréal beauty advisor mascot">
+              <img
+                src="img/duckie.webp"
+                alt="Duck mascot for the L'Oréal beauty advisor"
+              />
+            </aside>
+
+            <div class="chat-panel">
+              <!-- phase seven -->
+              <h2 class="chat-heading">Beauty Advisor Chat</h2>
+              <div
+                id="chatWindow"
+                class="chat-window"
+                role="log"
+                aria-label="Conversation with the L'Oréal beauty advisor"
+                aria-live="polite"
+                aria-relevant="additions text"
+                tabindex="0"
+              >
+                <!-- messages will be appended here via JS -->
+              </div>
+
+              <form id="chatForm" class="chat-form">
+                <label for="userInput" class="visually-hidden">Message</label>
+                <input
+                  id="userInput"
+                  name="userInput"
+                  type="text"
+                  placeholder="Ask me about products or routines…"
+                  autocomplete="off"
+                  required
+                />
+                <button type="submit" id="sendBtn">
+                  <span class="material-icons">send</span>
+                  <span class="visually-hidden">Send</span>
+                </button>
+              </form>
+              <label class="web-search-control">
+                <input id="webSearchToggle" type="checkbox" />
+                Search the web for current L'Oréal information
+              </label>
+              <!-- phase 5 -->
+              <p id="chatStatus" class="chat-status" aria-live="polite"></p>
+              <!-- phase 5 end -->
+            </div>
+          </div>
         </section>
       </main>
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2026 Company Name. All rights reserved.</p>
-        <nav>
-          <!-- These URLs are placeholders -->
+        <p>&copy; 2026 L'Oréal Paris. All rights reserved.</p>
+        <nav aria-label="Footer links">
           <a href="https://www.loreal.com/en/privacy-policy/global-privacy-policy/">Privacy Policy</a>
           <a href="https://www.loreal.com/en/term-of-use/">Terms of Use</a>
-          <a href="#">Contact</a>
+          <a href="https://www.instagram.com/lorealparis/" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="img/instagram-white-icon.png" alt="Instagram" width="24" height="24" />
+          </a>
+          <a href="https://www.linkedin.com/company/loreal/" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="img/linkedin_white.png" alt="LinkedIn" width="24" height="24" />
+          </a>
+          <a href="https://www.youtube.com/user/lorealparis" target="_blank" rel="noopener noreferrer">
+            <img class="social-icon" src="img/youtube-app-white-icon.png" alt="YouTube" width="24" height="24" />
+          </a>
         </nav>
       </footer>
     </div>
